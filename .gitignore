@@ -163,3 +163,5 @@ cython_debug/
 .DS_Store
 
 kaggle.json
+
+.virtual_documents
