@@ -7,12 +7,15 @@
 </head>
 <body>
     <h1>Prediction Results</h1>
-    <p><strong>Prediction:</strong> {{ prediction }}</p>
-    <p><strong>Probability:</strong> {{ probability }}</p>
+    <p><strong>Risk Level:</strong> {{ prediction }}</p>
+    <p><strong>Probability of Each Class:</strong></p>
+    <ul>
+        <li>Low Risk: {{ probability[0] }}</li>
+        <li>High Risk: {{ probability[1] }}</li>
+    </ul>
     <p>
-        <strong>Note:</strong> These predictions are based on a reduced set of features and are intended for informational 
-        purposes only. The model's accuracy for predicting diabetes risk is {{ model_accuracy }}% using the selected features. 
-        Please consult a healthcare provider for personalized medical advice.
+        <strong>Note:</strong> These predictions are based on a reduced set of features and are intended for informational purposes only. 
+        The model's accuracy is {{ model_accuracy }}%. Please consult a healthcare provider for personalized advice.
     </p>
     <a href="/">Back to Form</a>
 </body>

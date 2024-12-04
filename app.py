@@ -1,10 +1,10 @@
-from flask import Flask, render_template, request
+from flask import Flask, request, render_template
 from joblib import load
 import numpy as np
 
 app = Flask(__name__)
 
-# Load the trained model
+# Load the saved model
 model = load("optimized_logistic_regression_model.joblib")
 
 @app.route('/')
@@ -29,13 +29,16 @@ def predict():
         prediction = model.predict(features_array)
         probability = model.predict_proba(features_array)
 
+        # Map prediction to user-friendly label
+        risk_level = "Low Risk" if prediction[0] == 0 else "High Risk"
+
         # Model accuracy (replace with actual value)
         model_accuracy = 70  # Example: 70%
 
         # Render result template with prediction
         return render_template(
             'result.html',
-            prediction=int(prediction[0]),
+            prediction=risk_level,
             probability=probability[0].tolist(),
             model_accuracy=model_accuracy
         )
@@ -44,4 +47,3 @@ def predict():
 
 if __name__ == "__main__":
     app.run(debug=True)
-

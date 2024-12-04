@@ -7,30 +7,39 @@
 </head>
 <body>
     <h1>Diabetes Risk Prediction</h1>
-    <p>
-        <strong>Note:</strong> This model predicts diabetes risk using a reduced set of five features. 
-        While it provides valuable insights, it is not a substitute for professional medical advice. 
-        The model's reliability is highest when used with similar data to the training dataset.
-    </p>
-
     <form method="POST" action="/predict">
-        <label for="feature1">Feature 1: High Blood Pressure (Example: 1 for Yes, 0 for No):</label>
-        <input type="number" id="feature1" name="feature1" required><br>
+        <label for="feature1">High Blood Pressure:</label>
+        <select id="feature1" name="feature1" required>
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+        </select>
+        <br>
 
-        <label for="feature2">Feature 2: High Cholesterol (Example: 1 for Yes, 0 for No):</label>
-        <input type="number" id="feature2" name="feature2" required><br>
+        <label for="feature2">High Cholesterol:</label>
+        <select id="feature2" name="feature2" required>
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+        </select>
+        <br>
 
-        <label for="feature3">Feature 3: Age (Example: 25):</label>
-        <input type="number" id="feature3" name="feature3" required><br>
+        <label for="feature3">Age:</label>
+        <input type="number" id="feature3" name="feature3" min="0" max="120" placeholder="e.g., 25" required>
+        <br>
 
-        <label for="feature4">Feature 4: Smoker (Example: 1 for Yes, 0 for No):</label>
-        <input type="number" id="feature4" name="feature4" required><br>
+        <label for="feature4">Smoker:</label>
+        <select id="feature4" name="feature4" required>
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+        </select>
+        <br>
 
-        <label for="feature5">Feature 5: BMI (Body Mass Index, Example: 25.0):</label>
-        <input type="number" step="0.1" id="feature5" name="feature5" required><br>
+        <label for="feature5">BMI (Body Mass Index):</label>
+        <input type="number" id="feature5" name="feature5" step="0.1" placeholder="e.g., 25.0" required>
+        <br>
 
         <button type="submit">Predict</button>
     </form>
 </body>
 </html>
+
 
