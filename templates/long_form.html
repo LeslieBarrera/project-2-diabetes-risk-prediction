@@ -1,17 +1,45 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Long Form</title>
+    <title>Diabetes Risk Prediction - Long Form</title>
 </head>
 <body>
-    <h1>Long Form</h1>
+    <h1>Long Form - Comprehensive Features</h1>
+    <p>Please fill out the following fields based on your health information:</p>
     <form action="/predict" method="post">
-        {% for i in range(1, 22) %}
-        <label for="feature{{ i }}">Feature {{ i }}:</label>
-        <input type="text" id="feature{{ i }}" name="features[]"><br>
+        <label for="age">Age (in years):</label>
+        <input type="number" id="age" name="features[]" placeholder="e.g., 45"><br><br>
+
+        <label for="bmi">BMI (Body Mass Index):</label>
+        <input type="number" step="0.1" id="bmi" name="features[]" placeholder="e.g., 25.4"><br><br>
+
+        <label for="smoking">Smoking Habit:</label>
+        <select id="smoking" name="features[]">
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+        </select><br><br>
+
+        <label for="alcohol">Alcohol Consumption:</label>
+        <select id="alcohol" name="features[]">
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+        </select><br><br>
+
+        <label for="exercise">Exercise Regularly:</label>
+        <select id="exercise" name="features[]">
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+        </select><br><br>
+
+        <!-- Add all other features with specific input types -->
+        {% for i in range(6, 22) %}
+        <label for="feature{{ i }}">Feature {{ i }} (Custom description):</label>
+        <input type="text" id="feature{{ i }}" name="features[]"><br><br>
         {% endfor %}
+
         <input type="hidden" name="form_type" value="long">
-        <button type="submit">Predict</button>
+        <button type="submit">Predict Risk</button>
     </form>
 </body>
 </html>
+

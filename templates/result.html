@@ -1,22 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prediction Results</title>
+    <title>Diabetes Risk Prediction Result</title>
 </head>
 <body>
-    <h1>Prediction Results</h1>
-    <p><strong>Risk Level:</strong> {{ prediction }}</p>
-    <p><strong>Probability of Each Class:</strong></p>
-    <ul>
-        <li>Low Risk: {{ probability[0] }}</li>
-        <li>High Risk: {{ probability[1] }}</li>
-    </ul>
-    <p>
-        <strong>Note:</strong> These predictions are based on a reduced set of features and are intended for informational purposes only. 
-        The model's accuracy is {{ model_accuracy }}%. Please consult a healthcare provider for personalized advice.
-    </p>
+    <h1>Prediction Result</h1>
+    {% if prediction == 0 %}
+        <p><strong>Your predicted risk level: Low Risk</strong></p>
+    {% else %}
+        <p><strong>Your predicted risk level: High Risk</strong></p>
+    {% endif %}
+    <p>Confidence level: {{ probability }}%</p>
     <a href="/">Back to Form</a>
 </body>
 </html>
