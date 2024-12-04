@@ -4,22 +4,58 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Diabetes Risk Prediction</title>
-    <link rel="stylesheet" href="/static/css/styles.css">
+    <link rel="stylesheet" href="/static/css/style.css">
 </head>
 <body>
-    <h1>Diabetes Risk Prediction</h1>
-    <form action="/predict" method="post">
-        <label for="feature1">Feature 1:</label>
-        <input type="number" id="feature1" name="features[]" required><br>
-        <label for="feature2">Feature 2:</label>
-        <input type="number" id="feature2" name="features[]" required><br>
-        <label for="feature3">Feature 3:</label>
-        <input type="number" id="feature3" name="features[]" required><br>
-        <label for="feature4">Feature 4:</label>
-        <input type="number" id="feature4" name="features[]" required><br>
-        <label for="feature5">Feature 5:</label>
-        <input type="number" id="feature5" name="features[]" required><br>
-        <button type="submit">Predict</button>
-    </form>
+    <div class="container">
+        <h1>Diabetes Risk Prediction</h1>
+        <p>Enter your details below to predict your diabetes risk. All fields are required.</p>
+
+        <form id="prediction-form">
+            <div class="form-group">
+                <label for="age">Age (in years):</label>
+                <input type="number" id="age" name="age" placeholder="E.g., 45" required>
+                <small class="helper-text">Enter your age in years (e.g., 30, 45).</small>
+            </div>
+
+            <div class="form-group">
+                <label for="bmi">BMI (Body Mass Index):</label>
+                <input type="number" id="bmi" name="bmi" step="0.1" placeholder="E.g., 24.5" required>
+                <small class="helper-text">Enter your BMI as a number (e.g., 22.5, 27.3).</small>
+            </div>
+
+            <div class="form-group">
+                <label for="physical-activity">Physical Activity Level:</label>
+                <input type="number" id="physical-activity" name="physical-activity" step="0.1" placeholder="E.g., 3.5" required>
+                <small class="helper-text">Enter hours of physical activity per week (e.g., 2.0, 5.5).</small>
+            </div>
+
+            <div class="form-group">
+                <label for="smoking-status">Smoking Status:</label>
+                <select id="smoking-status" name="smoking-status" required>
+                    <option value="" disabled selected>Select an option</option>
+                    <option value="0">Non-Smoker</option>
+                    <option value="1">Smoker</option>
+                </select>
+                <small class="helper-text">Select 0 if you don't smoke, or 1 if you do.</small>
+            </div>
+
+            <div class="form-group">
+                <label for="alcohol-consumption">Alcohol Consumption:</label>
+                <select id="alcohol-consumption" name="alcohol-consumption" required>
+                    <option value="" disabled selected>Select an option</option>
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
+                </select>
+                <small class="helper-text">Select 0 if you don't consume alcohol, or 1 if you do.</small>
+            </div>
+
+            <button type="submit" class="btn">Predict</button>
+        </form>
+
+        <div id="result"></div>
+    </div>
+    <script src="/static/js/form.js"></script>
 </body>
 </html>
+

@@ -1,15 +1,34 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Prediction Results</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diabetes Risk Prediction</title>
+    <link rel="stylesheet" href="/static/css/style.css">
 </head>
 <body>
-    <h1>Prediction Results</h1>
-    <p>Prediction: {{ prediction }}</p>
-    <p>Probability: {{ probability }}</p>
-    <a href="/">Make another prediction</a>
+    <h1>Diabetes Risk Prediction</h1>
+    <form action="/predict" method="post">
+        <label for="high_bp">High Blood Pressure (1 for Yes, 0 for No):</label><br>
+        <input type="text" id="high_bp" name="features" placeholder="e.g., 1"><br><br>
+
+        <label for="chol_check">Cholesterol Check (1 for Yes, 0 for No):</label><br>
+        <input type="text" id="chol_check" name="features" placeholder="e.g., 1"><br><br>
+
+        <label for="bmi">BMI (Body Mass Index, e.g., 25.5):</label><br>
+        <input type="text" id="bmi" name="features" placeholder="e.g., 25.5"><br><br>
+
+        <label for="smoker">Smoking Habit (1 for Yes, 0 for No):</label><br>
+        <input type="text" id="smoker" name="features" placeholder="e.g., 1"><br><br>
+
+        <label for="phys_health">Physical Health (Number of unhealthy days in the past 30 days, e.g., 5):</label><br>
+        <input type="text" id="phys_health" name="features" placeholder="e.g., 5"><br><br>
+
+        <button type="submit">Predict Risk</button>
+    </form>
 </body>
 </html>
+
 
 
 
