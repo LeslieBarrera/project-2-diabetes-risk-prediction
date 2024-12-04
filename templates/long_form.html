@@ -3,38 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Long Form Diabetes Risk Prediction</title>
+    <title>Diabetes Risk Prediction - Long Form</title>
 </head>
 <body>
-    <h1>Long Form Diabetes Risk Prediction</h1>
-    <p>Answer more questions for a detailed prediction:</p>
+    <h1>Long Form: Diabetes Risk Prediction</h1>
+    <p>Provide more detailed answers to these questions for a comprehensive prediction:</p>
     <form action="/predict_long" method="post">
-        <!-- Add all features here, similar to the short form but expanded -->
-        <label for="age">Age:</label>
-        <input type="number" id="age" name="age" required placeholder="Enter your age"><br><br>
+        <!-- Repeat and extend with all the necessary fields -->
+        <label for="age">Age (in years):</label>
+        <input type="number" id="age" name="age" required><br><br>
 
-        <label for="bmi">BMI:</label>
-        <input type="number" id="bmi" name="bmi" step="0.1" required placeholder="Enter your BMI"><br><br>
+        <label for="bmi">Body Mass Index (BMI):</label>
+        <input type="number" id="bmi" name="bmi" step="0.1" required><br><br>
 
-        <label for="physical_activity">Physical Activity:</label>
-        <select id="physical_activity" name="physical_activity" required>
-            <option value="">-- Select --</option>
-            <option value="Active">Active</option>
-            <option value="Inactive">Inactive</option>
-        </select><br><br>
-
-        <!-- Add other features here -->
-        <label for="cholesterol">Cholesterol Level:</label>
-        <input type="number" id="cholesterol" name="cholesterol" required placeholder="Enter cholesterol level"><br><br>
-
-        <label for="blood_pressure">Blood Pressure:</label>
-        <input type="number" id="blood_pressure" name="blood_pressure" required placeholder="Enter blood pressure"><br><br>
-
-        <!-- Continue adding fields for all long-form features -->
+        <!-- Add fields for all other features included in the long form -->
 
         <button type="submit">Predict</button>
     </form>
 </body>
 </html>
+
 
 

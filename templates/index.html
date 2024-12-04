@@ -7,34 +7,21 @@
 </head>
 <body>
     <h1>Diabetes Risk Prediction</h1>
-    <form action="/predict" method="post">
-        <label for="age">Age:</label>
-        <input type="number" id="age" name="age" required><br><br>
+    <p>Welcome to the Diabetes Risk Prediction Tool. Select your preferred form below:</p>
 
-        <label for="bmi">BMI:</label>
-        <input type="number" id="bmi" name="bmi" step="0.1" required><br><br>
+    <h2>Short Form</h2>
+    <p>Answer a few key questions to get a quick prediction. This form uses the top 5 most relevant features for a faster result.</p>
+    <form action="/short_form" method="get">
+        <button type="submit">Use Short Form</button>
+    </form>
 
-        <label for="physical_activity">Physical Activity:</label>
-        <select id="physical_activity" name="physical_activity" required>
-            <option value="Active">Active</option>
-            <option value="Inactive">Inactive</option>
-        </select><br><br>
-
-        <label for="gender">Gender:</label>
-        <select id="gender" name="gender" required>
-            <option value="Male">Male</option>
-            <option value="Female">Female</option>
-        </select><br><br>
-
-        <label for="smoking_status">Smoking Status:</label>
-        <select id="smoking_status" name="smoking_status" required>
-            <option value="Smoker">Smoker</option>
-            <option value="Non-smoker">Non-smoker</option>
-        </select><br><br>
-
-        <button type="submit">Predict</button>
+    <h2>Long Form</h2>
+    <p>Provide more detailed information for a comprehensive and confident prediction. This form uses all available features.</p>
+    <form action="/long_form" method="get">
+        <button type="submit">Use Long Form</button>
     </form>
 </body>
 </html>
+
 
 
