@@ -1,10 +1,10 @@
-from flask import Flask, request, jsonify, render_template
+from flask import Flask, render_template, request
 from joblib import load
 import numpy as np
 
 app = Flask(__name__)
 
-# Load the saved model
+# Load the trained model
 model = load("optimized_logistic_regression_model.joblib")
 
 @app.route('/')
@@ -14,30 +14,34 @@ def home():
 @app.route('/predict', methods=['POST'])
 def predict():
     try:
-        # Get form data
-        features = [
-            float(request.form["feature1"]),
-            float(request.form["feature2"]),
-            float(request.form["feature3"]),
-            float(request.form["feature4"]),
-            float(request.form["feature5"]),
-        ]
+        # Parse form data
+        feature1 = float(request.form['feature1'])
+        feature2 = float(request.form['feature2'])
+        feature3 = float(request.form['feature3'])
+        feature4 = float(request.form['feature4'])
+        feature5 = float(request.form['feature5'])
 
-        # Convert features to numpy array for prediction
+        # Prepare features for prediction
+        features = [feature1, feature2, feature3, feature4, feature5]
         features_array = np.array(features).reshape(1, -1)
 
-        # Make predictions
+        # Make prediction
         prediction = model.predict(features_array)
         probability = model.predict_proba(features_array)
 
-        # Return results to be displayed
+        # Model accuracy (replace with actual value)
+        model_accuracy = 70  # Example: 70%
+
+        # Render result template with prediction
         return render_template(
             'result.html',
             prediction=int(prediction[0]),
-            probability=probability[0]
+            probability=probability[0].tolist(),
+            model_accuracy=model_accuracy
         )
     except Exception as e:
-        return jsonify({"error": str(e)}), 400
+        return f"Error occurred: {e}", 500
 
 if __name__ == "__main__":
     app.run(debug=True)
+
