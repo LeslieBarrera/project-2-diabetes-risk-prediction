@@ -164,5 +164,4 @@ cython_debug/
 
 kaggle.json
 
-.virtual_documents/
-data/
+.virtual_documents
