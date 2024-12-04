@@ -166,3 +166,5 @@ kaggle.json
 
 .virtual_documents
 reduced_model.pkl
+reduced_model.pkl
+reduced_model.pkl.gz
