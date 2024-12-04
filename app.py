@@ -5,13 +5,13 @@ import numpy as np
 app = Flask(__name__)
 
 # Load the saved model
-model = load("weighted_xgboost_model.joblib")
+model = load("optimized_logistic_regression_model.joblib")
 
 @app.route('/predict', methods=['POST'])
 def predict():
     # Parse input JSON
     data = request.get_json()
-    features = np.array(data["features"]).reshape(1, -1)  # Reshape for a single prediction
+    features = np.array(data["features"]).reshape(1, -1)  # Ensure input is in the correct shape
 
     # Make predictions
     prediction = model.predict(features)
@@ -25,4 +25,3 @@ def predict():
 
 if __name__ == "__main__":
     app.run(debug=True)
-
