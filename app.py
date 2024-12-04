@@ -4,52 +4,45 @@ import numpy as np
 
 app = Flask(__name__)
 
-# Load the saved model
+# Load the optimized logistic regression model
 short_form_model = load("optimized_logistic_regression_model.joblib")
-long_form_model = load("weighted_xgboost_model.joblib")
 
-@app.route('/')
+@app.route("/")
 def home():
-    return render_template('short_form.html')
+    return render_template("form.html")
 
-@app.route('/form/<form_type>')
-def form(form_type):
-    if form_type == "short":
-        return render_template('short_form.html')
-    elif form_type == "long":
-        return render_template('long_form.html')
-    else:
-        return "Invalid form type.", 400
-
-@app.route('/predict', methods=['POST'])
+@app.route("/predict", methods=["POST"])
 def predict():
-    # Check if form data is present
-    if request.form:
-        try:
-            features = [float(value) for value in request.form.getlist('features[]')]
-            form_type = request.form.get('form_type')
-        except ValueError:
-            return "Invalid input: ensure all fields are properly filled.", 400
-    else:
-        return "Unsupported Media Type. Use the form to submit your data.", 415
+    try:
+        # Extract form data
+        data = request.form
 
-    # Choose model based on form type
-    model = short_form_model if form_type == "short" else long_form_model
+        # Map the user inputs to the required features
+        features = [
+            int(data.get("age", 0)),
+            float(data.get("bmi", 0)),
+            1 if data.get("physical_activity") == "Active" else 0,
+            1 if data.get("gender") == "Male" else 0,
+            1 if data.get("smoking_status") == "Smoker" else 0,
+        ]
 
-    # Convert features to numpy array
-    features_array = np.array(features).reshape(1, -1)
+        # Reshape for model prediction
+        features_array = np.array(features).reshape(1, -1)
 
-    # Predict and get probabilities
-    prediction = model.predict(features_array)[0]
-    probability = model.predict_proba(features_array).max()
+        # Make predictions using the logistic regression model
+        prediction = short_form_model.predict(features_array)
+        probability = short_form_model.predict_proba(features_array)
 
-    # Render results
-    result = "Low Risk" if prediction == 0 else "High Risk"
-    return render_template(
-        'result.html',
-        prediction=result,
-        probability=f"{probability * 100:.2f}"
-    )
+        # Prepare the results
+        result = {
+            "risk": "Low Risk" if prediction[0] == 0 else "High Risk",
+            "confidence": f"{max(probability[0]) * 100:.2f}%"
+        }
+
+        return render_template("result.html", result=result)
+    except Exception as e:
+        return jsonify({"error": str(e)})
 
 if __name__ == "__main__":
     app.run(debug=True)
+

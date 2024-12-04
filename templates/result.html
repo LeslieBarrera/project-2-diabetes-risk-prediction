@@ -1,19 +1,18 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Diabetes Risk Prediction Result</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Result</title>
 </head>
 <body>
     <h1>Prediction Result</h1>
-    {% if prediction == 0 %}
-        <p><strong>Your predicted risk level: Low Risk</strong></p>
-    {% else %}
-        <p><strong>Your predicted risk level: High Risk</strong></p>
-    {% endif %}
-    <p>Confidence level: {{ probability }}%</p>
-    <a href="/">Back to Form</a>
+    <p><strong>Risk Level:</strong> {{ result.risk }}</p>
+    <p><strong>Confidence:</strong> {{ result.confidence }}</p>
+    <a href="/">Go back</a>
 </body>
 </html>
+
 
 
 
