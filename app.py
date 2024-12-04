@@ -1,49 +1,55 @@
-from flask import Flask, request, render_template
+from flask import Flask, request, render_template, jsonify
 from joblib import load
 import numpy as np
 
 app = Flask(__name__)
 
-# Load the saved model
-model = load("optimized_logistic_regression_model.joblib")
+# Load models
+short_model = load("optimized_logistic_regression_model.joblib")
+long_model = load("long_form_model.joblib")
 
-@app.route('/')
-def home():
-    return render_template('index.html')
+@app.route("/")
+def index():
+    return render_template("index.html")
 
-@app.route('/predict', methods=['POST'])
+@app.route("/form", methods=["GET"])
+def form():
+    form_type = request.args.get("type")  # Get form type from query parameters
+    if form_type == "short":
+        return render_template("short_form.html")
+    elif form_type == "long":
+        return render_template("long_form.html")
+    else:
+        return "Invalid form type", 400
+
+@app.route("/predict", methods=["POST"])
 def predict():
-    try:
-        # Parse form data
-        feature1 = float(request.form['feature1'])
-        feature2 = float(request.form['feature2'])
-        feature3 = float(request.form['feature3'])
-        feature4 = float(request.form['feature4'])
-        feature5 = float(request.form['feature5'])
+    data = request.get_json()
+    form_type = data.get("form_type")  # short or long
+    features = np.array(data["features"]).reshape(1, -1)
 
-        # Prepare features for prediction
-        features = [feature1, feature2, feature3, feature4, feature5]
-        features_array = np.array(features).reshape(1, -1)
+    if form_type == "short":
+        model = short_model
+        confidence = "70%"
+    elif form_type == "long":
+        model = long_model
+        confidence = "85%"
+    else:
+        return jsonify({"error": "Invalid form type"}), 400
 
-        # Make prediction
-        prediction = model.predict(features_array)
-        probability = model.predict_proba(features_array)
+    prediction = model.predict(features)[0]
+    probabilities = model.predict_proba(features).tolist()
 
-        # Map prediction to user-friendly label
-        risk_level = "Low Risk" if prediction[0] == 0 else "High Risk"
+    # Translate prediction to user-friendly labels
+    risk_level = "Low Risk" if prediction == 0 else "High Risk"
 
-        # Model accuracy (replace with actual value)
-        model_accuracy = 70  # Example: 70%
-
-        # Render result template with prediction
-        return render_template(
-            'result.html',
-            prediction=risk_level,
-            probability=probability[0].tolist(),
-            model_accuracy=model_accuracy
-        )
-    except Exception as e:
-        return f"Error occurred: {e}", 500
+    return jsonify({
+        "form_type": form_type,
+        "risk_level": risk_level,
+        "confidence": confidence,
+        "probabilities": probabilities
+    })
 
 if __name__ == "__main__":
     app.run(debug=True)
+
