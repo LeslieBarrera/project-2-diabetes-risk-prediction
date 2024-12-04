@@ -3,25 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Diabetes Risk Prediction - Long Form</title>
+    <title>Long Form - Diabetes Risk Prediction</title>
 </head>
 <body>
     <h1>Long Form: Diabetes Risk Prediction</h1>
-    <p>Provide more detailed answers to these questions for a comprehensive prediction:</p>
-    <form action="/predict_long" method="post">
-        <!-- Repeat and extend with all the necessary fields -->
-        <label for="age">Age (in years):</label>
+    <form action="/long_form" method="post">
+        <label for="age">Age:</label>
         <input type="number" id="age" name="age" required><br><br>
 
-        <label for="bmi">Body Mass Index (BMI):</label>
-        <input type="number" id="bmi" name="bmi" step="0.1" required><br><br>
+        <!-- Add inputs for all features in your long form model -->
+        <label for="feature_1">Feature 1:</label>
+        <input type="number" id="feature_1" name="feature_1" step="0.1" required><br><br>
 
-        <!-- Add fields for all other features included in the long form -->
-
-        <button type="submit">Predict</button>
+        <!-- Repeat the above block for all features needed -->
+        <button type="submit">Submit</button>
     </form>
 </body>
 </html>
+
 
 
 

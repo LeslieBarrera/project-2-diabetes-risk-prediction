@@ -3,40 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Diabetes Risk Prediction - Short Form</title>
+    <title>Short Form - Diabetes Risk Prediction</title>
 </head>
 <body>
     <h1>Short Form: Diabetes Risk Prediction</h1>
-    <p>Provide answers to these 5 key questions for a quick prediction:</p>
-    <form action="/predict_short" method="post">
-        <label for="age">Age (in years):</label>
+    <form action="/short_form" method="post">
+        <label for="age">Age:</label>
         <input type="number" id="age" name="age" required><br><br>
 
-        <label for="bmi">Body Mass Index (BMI):</label>
+        <label for="bmi">BMI (Body Mass Index):</label>
         <input type="number" id="bmi" name="bmi" step="0.1" required><br><br>
 
         <label for="physical_activity">Physical Activity Level:</label>
         <select id="physical_activity" name="physical_activity" required>
-            <option value="1">Active</option>
-            <option value="0">Inactive</option>
+            <option value="Active">Active</option>
+            <option value="Inactive">Inactive</option>
         </select><br><br>
 
         <label for="gender">Gender:</label>
         <select id="gender" name="gender" required>
-            <option value="1">Male</option>
-            <option value="0">Female</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
         </select><br><br>
 
         <label for="smoking_status">Smoking Status:</label>
         <select id="smoking_status" name="smoking_status" required>
-            <option value="1">Smoker</option>
-            <option value="0">Non-smoker</option>
+            <option value="Smoker">Smoker</option>
+            <option value="Non-smoker">Non-smoker</option>
         </select><br><br>
 
-        <button type="submit">Predict</button>
+        <button type="submit">Submit</button>
     </form>
 </body>
 </html>
+
 
 
 
