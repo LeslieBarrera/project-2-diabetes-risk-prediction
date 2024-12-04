@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Short Form</title>
+</head>
+<body>
+    <h1>Short Form</h1>
+    <form action="/predict" method="post">
+        <label for="feature1">Feature 1:</label>
+        <input type="text" id="feature1" name="features[]"><br>
+        <label for="feature2">Feature 2:</label>
+        <input type="text" id="feature2" name="features[]"><br>
+        <label for="feature3">Feature 3:</label>
+        <input type="text" id="feature3" name="features[]"><br>
+        <label for="feature4">Feature 4:</label>
+        <input type="text" id="feature4" name="features[]"><br>
+        <label for="feature5">Feature 5:</label>
+        <input type="text" id="feature5" name="features[]"><br>
+        <input type="hidden" name="form_type" value="short">
+        <button type="submit">Predict</button>
+    </form>
+</body>
+</html>

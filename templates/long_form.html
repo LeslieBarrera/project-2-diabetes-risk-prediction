@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Long Form</title>
+</head>
+<body>
+    <h1>Long Form</h1>
+    <form action="/predict" method="post">
+        {% for i in range(1, 22) %}
+        <label for="feature{{ i }}">Feature {{ i }}:</label>
+        <input type="text" id="feature{{ i }}" name="features[]"><br>
+        {% endfor %}
+        <input type="hidden" name="form_type" value="long">
+        <button type="submit">Predict</button>
+    </form>
+</body>
+</html>
