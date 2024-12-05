@@ -3,23 +3,100 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Long Form - Diabetes Risk Prediction</title>
+    <title>Diabetes Risk Prediction - Long Form</title>
 </head>
 <body>
-    <h1>Long Form: Diabetes Risk Prediction</h1>
+    <h1>Diabetes Risk Prediction - Long Form</h1>
+    <p>Please fill out the following form to provide detailed information about your health. This form is based on factors similar to public health surveys like BRFSS.</p>
     <form action="/long_form" method="post">
-        <label for="age">Age:</label>
-        <input type="number" id="age" name="age" required><br><br>
+        <h2>Demographic Information</h2>
+        <label for="age">Age (in years):</label>
+        <input type="number" id="age" name="age" min="1" required><br><br>
 
-        <!-- Add inputs for all features in your long form model -->
-        <label for="feature_1">Feature 1:</label>
-        <input type="number" id="feature_1" name="feature_1" step="0.1" required><br><br>
+        <label for="gender">Gender:</label>
+        <select id="gender" name="gender" required>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+        </select><br><br>
 
-        <!-- Repeat the above block for all features needed -->
-        <button type="submit">Submit</button>
+        <h2>Physical Measurements</h2>
+        <label for="bmi">Body Mass Index (BMI):</label>
+        <input type="number" id="bmi" name="bmi" step="0.1" required><br><br>
+
+        <label for="waist_circumference">Waist Circumference (in cm):</label>
+        <input type="number" id="waist_circumference" name="waist_circumference" step="0.1" required><br><br>
+
+        <label for="blood_pressure">Blood Pressure (Systolic/Diastolic):</label>
+        <input type="text" id="blood_pressure" name="blood_pressure" placeholder="e.g., 120/80" required><br><br>
+
+        <label for="blood_glucose">Blood Glucose Level (mg/dL):</label>
+        <input type="number" id="blood_glucose" name="blood_glucose" step="0.1" required><br><br>
+
+        <h2>Health Habits</h2>
+        <label for="physical_activity">Physical Activity Level:</label>
+        <select id="physical_activity" name="physical_activity" required>
+            <option value="Active">Active</option>
+            <option value="Inactive">Inactive</option>
+        </select><br><br>
+
+        <label for="smoking_status">Smoking Status:</label>
+        <select id="smoking_status" name="smoking_status" required>
+            <option value="Smoker">Smoker</option>
+            <option value="Non-smoker">Non-smoker</option>
+        </select><br><br>
+
+        <label for="alcohol_consumption">Alcohol Consumption:</label>
+        <select id="alcohol_consumption" name="alcohol_consumption" required>
+            <option value="Never">Never</option>
+            <option value="Rarely">Rarely</option>
+            <option value="Occasionally">Occasionally</option>
+            <option value="Frequently">Frequently</option>
+        </select><br><br>
+
+        <h2>Sleep and General Health</h2>
+        <label for="sleep_hours">Average Sleep Hours per Night:</label>
+        <input type="number" id="sleep_hours" name="sleep_hours" step="0.1" required><br><br>
+
+        <label for="general_health">General Health:</label>
+        <select id="general_health" name="general_health" required>
+            <option value="Excellent">Excellent</option>
+            <option value="Very Good">Very Good</option>
+            <option value="Good">Good</option>
+            <option value="Fair">Fair</option>
+            <option value="Poor">Poor</option>
+        </select><br><br>
+
+        <h2>Pre-existing Conditions</h2>
+        <label for="high_cholesterol">Do you have high cholesterol?</label>
+        <select id="high_cholesterol" name="high_cholesterol" required>
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+        </select><br><br>
+
+        <label for="high_blood_pressure">Do you have high blood pressure?</label>
+        <select id="high_blood_pressure" name="high_blood_pressure" required>
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+        </select><br><br>
+
+        <label for="diabetes_history">Have you ever been diagnosed with diabetes?</label>
+        <select id="diabetes_history" name="diabetes_history" required>
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+        </select><br><br>
+
+        <h2>Family History</h2>
+        <label for="family_diabetes_history">Do you have a family history of diabetes?</label>
+        <select id="family_diabetes_history" name="family_diabetes_history" required>
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+        </select><br><br>
+
+        <button type="submit">Predict</button>
     </form>
 </body>
 </html>
+
 
 
 
