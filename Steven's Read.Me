@@ -1,0 +1,101 @@
+# Diabetes Predictive Model
+
+## Project Overview
+
+The **Diabetes Predictive Model** aims to determine if survey questions from the Behavioral Risk Factor Surveillance System (BRFSS) dataset can accurately predict an individual's diabetes status. This project leverages machine learning techniques to analyze health measures, lifestyle factors, and demographic data, creating a robust predictive model.
+
+The dataset was sourced from Kaggle and contains:
+- **253,860 rows** and **23 columns**
+- **Target Variable (`Diabetes_012`)**:
+  - `0`: No Diabetes
+  - `1`: Prediabetes
+  - `2`: Diabetes
+- Features include health measures, lifestyle habits, and demographic information.
+
+## Research Question
+
+**"Can survey questions from the BRFSS provide accurate predictions of whether an individual has diabetes?"**
+
+This project seeks to answer this question by employing data preprocessing, model training, and evaluation techniques to assess prediction accuracy.
+
+## File Structure
+
+- **`resources/diabetes_012_health_indicators_BRFSS2015.csv`**: The dataset file.
+- **Code Files**: The Python code used to process the data, build models, and visualize results.
+
+## Data Exploration
+
+Initial exploration steps included:
+1. Loading the dataset with Pandas.
+2. Displaying the first few rows and a summary of the dataset to understand its structure.
+3. Checking the distribution of the target variable (`Diabetes_012`) both numerically and visually:
+   - Visualized using a Seaborn count plot.
+   - Identified class imbalance: majority of observations belong to the "No Diabetes" category.
+
+## Methodology
+
+### Data Preparation
+1. **Feature and Target Separation**:
+   - Features (`X`): All columns except `Diabetes_012`.
+   - Target (`y`): The `Diabetes_012` column.
+
+2. **Dataset Splitting**:
+   - **Training Set**: 80% of the data.
+   - **Test Set**: 20% of the data.
+   - Stratification applied to maintain class distribution.
+
+3. **Addressing Class Imbalance**:
+   - Applied **SMOTE (Synthetic Minority Oversampling Technique)** to the training data to ensure balanced representation of all target classes.
+
+### Model Building
+#### Initial Model
+- Trained a **Decision Tree Classifier** with a random state of 42 for reproducibility.
+- Evaluated performance using:
+  - **Classification Report**: Precision, recall, and F1-score.
+  - **Confusion Matrix**: Distribution of predictions.
+
+#### Hyperparameter Tuning
+- Performed grid search with cross-validation (`GridSearchCV`) to optimize hyperparameters:
+  - `max_depth`: [5, 10, 15, None]
+  - `min_samples_split`: [2, 5, 10]
+  - `min_samples_leaf`: [1, 2, 4]
+  - `criterion`: ['gini', 'entropy']
+- Retrieved the best parameters and refit the model.
+
+### Model Evaluation
+1. Predictions were made using the optimized model on the test dataset.
+2. **Performance Metrics**:
+   - **Classification Report**: Highlighted the model's effectiveness in predicting each diabetes class.
+   - **Confusion Matrix**: Analyzed prediction distribution.
+
+### Visualization
+- Visualized the structure of the decision tree using `plot_tree`:
+  - Highlighted feature importance and splits.
+  - Provided a clear, interpretable view of the model's decision-making process.
+
+## Results and Insights
+
+1. **Model Accuracy**:
+   - The final tuned Decision Tree Classifier demonstrated improved accuracy compared to the initial model.
+   - SMOTE contributed significantly to better predictions for minority classes (Prediabetes and Diabetes).
+
+2. **Key Findings**:
+   - Survey questions from BRFSS can indeed predict diabetes status with reasonable accuracy.
+   - The model effectively captures patterns in health and lifestyle data.
+
+## Conclusion
+
+This project successfully answers the research question, demonstrating that survey data from BRFSS provides valuable insights into diabetes prediction. Future work could include exploring additional machine learning models (e.g., Random Forest, Gradient Boosting) and feature engineering for further improvement.
+
+## Requirements
+
+The project requires the following Python libraries:
+- `pandas`
+- `matplotlib`
+- `seaborn`
+- `scikit-learn`
+- `imblearn`
+
+Install dependencies using:
+```bash
+pip install pandas matplotlib seaborn scikit-learn imbalanced-learn
