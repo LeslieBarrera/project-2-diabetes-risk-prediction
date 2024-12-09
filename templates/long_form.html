@@ -3,99 +3,172 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Diabetes Risk Prediction - Long Form</title>
+    <title>Long Form - Diabetes Risk Prediction</title>
 </head>
 <body>
-    <h1>Diabetes Risk Prediction - Long Form</h1>
-    <p>Please fill out the following form to provide detailed information about your health. This form is based on factors similar to public health surveys like BRFSS.</p>
-    <form action="/long_form" method="post">
-        <h2>Demographic Information</h2>
-        <label for="age">Age (in years):</label>
-        <input type="number" id="age" name="age" min="1" required><br><br>
+    <h1>Long Form - Diabetes Risk Prediction</h1>
+    <p>Answer the following questions to assess your diabetes risk. Please provide accurate information for the best results.</p>
 
-        <label for="gender">Gender:</label>
-        <select id="gender" name="gender" required>
-            <option value="Male">Male</option>
-            <option value="Female">Female</option>
-        </select><br><br>
+    <form method="POST">
 
-        <h2>Physical Measurements</h2>
-        <label for="bmi">Body Mass Index (BMI):</label>
-        <input type="number" id="bmi" name="bmi" step="0.1" required><br><br>
+        <!-- Section 1: General Health -->
+        <h2>General Health</h2>
+        <label for="GenHlth">How would you rate your general health?</label>
+        <select id="GenHlth" name="GenHlth" required>
+            <option value="" disabled selected>Select your general health</option>
+            <option value="1">Excellent</option>
+            <option value="2">Very Good</option>
+            <option value="3">Good</option>
+            <option value="4">Fair</option>
+            <option value="5">Poor</option>
+        </select>
+        <br><br>
 
-        <label for="waist_circumference">Waist Circumference (in cm):</label>
-        <input type="number" id="waist_circumference" name="waist_circumference" step="0.1" required><br><br>
+        <label for="MentHlth">Number of mentally unhealthy days in the past month:</label>
+        <input type="number" id="MentHlth" name="MentHlth" min="0" max="30" placeholder="e.g., 5" required>
+        <br><br>
 
-        <label for="blood_pressure">Blood Pressure (Systolic/Diastolic):</label>
-        <input type="text" id="blood_pressure" name="blood_pressure" placeholder="e.g., 120/80" required><br><br>
+        <label for="PhysHlth">Number of physically unhealthy days in the past month:</label>
+        <input type="number" id="PhysHlth" name="PhysHlth" min="0" max="30" placeholder="e.g., 3" required>
+        <br><br>
 
-        <label for="blood_glucose">Blood Glucose Level (mg/dL):</label>
-        <input type="number" id="blood_glucose" name="blood_glucose" step="0.1" required><br><br>
+        <label for="DiffWalk">Do you have difficulty walking?</label>
+        <select id="DiffWalk" name="DiffWalk" required>
+            <option value="" disabled selected>Select an option</option>
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+        </select>
+        <br><br>
 
-        <h2>Health Habits</h2>
-        <label for="physical_activity">Physical Activity Level:</label>
-        <select id="physical_activity" name="physical_activity" required>
-            <option value="Active">Active</option>
-            <option value="Inactive">Inactive</option>
-        </select><br><br>
+        <!-- Section 2: Lifestyle and Habits -->
+        <h2>Lifestyle and Habits</h2>
+        <label for="PhysActivity">Do you engage in regular physical activity?</label>
+        <select id="PhysActivity" name="PhysActivity" required>
+            <option value="" disabled selected>Select an option</option>
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+        </select>
+        <br><br>
 
-        <label for="smoking_status">Smoking Status:</label>
-        <select id="smoking_status" name="smoking_status" required>
-            <option value="Smoker">Smoker</option>
-            <option value="Non-smoker">Non-smoker</option>
-        </select><br><br>
+        <label for="Fruits">Do you consume fruits regularly?</label>
+        <select id="Fruits" name="Fruits" required>
+            <option value="" disabled selected>Select an option</option>
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+        </select>
+        <br><br>
 
-        <label for="alcohol_consumption">Alcohol Consumption:</label>
-        <select id="alcohol_consumption" name="alcohol_consumption" required>
-            <option value="Never">Never</option>
-            <option value="Rarely">Rarely</option>
-            <option value="Occasionally">Occasionally</option>
-            <option value="Frequently">Frequently</option>
-        </select><br><br>
+        <label for="Veggies">Do you consume vegetables regularly?</label>
+        <select id="Veggies" name="Veggies" required>
+            <option value="" disabled selected>Select an option</option>
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+        </select>
+        <br><br>
 
-        <h2>Sleep and General Health</h2>
-        <label for="sleep_hours">Average Sleep Hours per Night:</label>
-        <input type="number" id="sleep_hours" name="sleep_hours" step="0.1" required><br><br>
+        <label for="HvyAlcoholConsump">Do you consume alcohol heavily?</label>
+        <select id="HvyAlcoholConsump" name="HvyAlcoholConsump" required>
+            <option value="" disabled selected>Select an option</option>
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+        </select>
+        <br><br>
 
-        <label for="general_health">General Health:</label>
-        <select id="general_health" name="general_health" required>
-            <option value="Excellent">Excellent</option>
-            <option value="Very Good">Very Good</option>
-            <option value="Good">Good</option>
-            <option value="Fair">Fair</option>
-            <option value="Poor">Poor</option>
-        </select><br><br>
+        <label for="Smoker">Are you a smoker?</label>
+        <select id="Smoker" name="Smoker" required>
+            <option value="" disabled selected>Select an option</option>
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+        </select>
+        <br><br>
 
-        <h2>Pre-existing Conditions</h2>
-        <label for="high_cholesterol">Do you have high cholesterol?</label>
-        <select id="high_cholesterol" name="high_cholesterol" required>
-            <option value="Yes">Yes</option>
-            <option value="No">No</option>
-        </select><br><br>
+        <!-- Section 3: Medical History -->
+        <h2>Medical History</h2>
+        <label for="HighBP">Do you have high blood pressure?</label>
+        <select id="HighBP" name="HighBP" required>
+            <option value="" disabled selected>Select an option</option>
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+        </select>
+        <br><br>
 
-        <label for="high_blood_pressure">Do you have high blood pressure?</label>
-        <select id="high_blood_pressure" name="high_blood_pressure" required>
-            <option value="Yes">Yes</option>
-            <option value="No">No</option>
-        </select><br><br>
+        <label for="HighChol">Do you have high cholesterol?</label>
+        <select id="HighChol" name="HighChol" required>
+            <option value="" disabled selected>Select an option</option>
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+        </select>
+        <br><br>
 
-        <label for="diabetes_history">Have you ever been diagnosed with diabetes?</label>
-        <select id="diabetes_history" name="diabetes_history" required>
-            <option value="Yes">Yes</option>
-            <option value="No">No</option>
-        </select><br><br>
+        <label for="CholCheck">Have you had your cholesterol checked?</label>
+        <select id="CholCheck" name="CholCheck" required>
+            <option value="" disabled selected>Select an option</option>
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+        </select>
+        <br><br>
 
-        <h2>Family History</h2>
-        <label for="family_diabetes_history">Do you have a family history of diabetes?</label>
-        <select id="family_diabetes_history" name="family_diabetes_history" required>
-            <option value="Yes">Yes</option>
-            <option value="No">No</option>
-        </select><br><br>
+        <label for="Stroke">Have you ever had a stroke?</label>
+        <select id="Stroke" name="Stroke" required>
+            <option value="" disabled selected>Select an option</option>
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+        </select>
+        <br><br>
+
+        <label for="HeartDiseaseorAttack">Have you had heart disease or a heart attack?</label>
+        <select id="HeartDiseaseorAttack" name="HeartDiseaseorAttack" required>
+            <option value="" disabled selected>Select an option</option>
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+        </select>
+        <br><br>
+
+        <!-- Section 4: Demographics -->
+        <h2>Demographics</h2>
+        <label for="Age">Age category:</label>
+        <input type="number" id="Age" name="Age" min="1" max="120" placeholder="e.g., 45" required>
+        <br><br>
+
+        <label for="Sex">Sex:</label>
+        <select id="Sex" name="Sex" required>
+            <option value="" disabled selected>Select your sex</option>
+            <option value="1">Male</option>
+            <option value="0">Female</option>
+        </select>
+        <br><br>
+
+        <label for="Education">Education level (1=Lowest, 6=College Graduate):</label>
+        <select id="Education" name="Education" required>
+            <option value="" disabled selected>Select your education level</option>
+            <option value="1">No Schooling</option>
+            <option value="2">Elementary School</option>
+            <option value="3">Middle School</option>
+            <option value="4">High School Graduate</option>
+            <option value="5">Some College</option>
+            <option value="6">College Graduate</option>
+        </select>
+        <br><br>
+
+        <label for="Income">Income level (1=Lowest, 8=Highest):</label>
+        <select id="Income" name="Income" required>
+            <option value="" disabled selected>Select your income level</option>
+            <option value="1">Lowest</option>
+            <option value="2">Low</option>
+            <option value="3">Lower-Middle</option>
+            <option value="4">Middle</option>
+            <option value="5">Upper-Middle</option>
+            <option value="6">High</option>
+            <option value="7">Higher</option>
+            <option value="8">Highest</option>
+        </select>
+        <br><br>
 
         <button type="submit">Predict</button>
     </form>
 </body>
 </html>
+
 
 
 

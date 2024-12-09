@@ -1,12 +1,16 @@
 from flask import Flask, render_template, request, jsonify
 from joblib import load
 import numpy as np
+import pandas as pd
 
 app = Flask(__name__)
 
 # Load models
-short_form_model = load("optimized_logistic_regression_model.joblib")
-long_form_model = load("long_form_model.joblib")
+short_form_model = load("diabetes_short_form_model.pkl")
+long_form_model = load("diabetes_long_form_model.pkl")  # Updated to match your saved model file
+
+# Load short form features
+short_form_features = pd.read_csv("diabetes_short_form_features.csv")["Feature"].tolist()
 
 @app.route("/")
 def index():
@@ -15,39 +19,63 @@ def index():
 @app.route("/short_form", methods=["GET", "POST"])
 def short_form():
     if request.method == "POST":
-        # Get form data for short form
-        age = int(request.form["age"])
-        bmi = float(request.form["bmi"])
-        physical_activity = 1 if request.form["physical_activity"] == "Active" else 0
-        gender = 1 if request.form["gender"] == "Male" else 0
-        smoking_status = 1 if request.form["smoking_status"] == "Smoker" else 0
+        # Collect input for short form
+        inputs = {}
+        for feature in short_form_features:
+            inputs[feature] = float(request.form.get(feature, 0))  # Default to 0 if missing
+        
+        # Convert inputs to a DataFrame with feature names
+        features_df = pd.DataFrame([inputs])
 
-        # Predict using short form model
-        features = np.array([age, bmi, physical_activity, gender, smoking_status]).reshape(1, -1)
-        prediction = short_form_model.predict(features)
-        probability = short_form_model.predict_proba(features)[0]
+        # Predict using the short form model
+        prediction = short_form_model.predict(features_df)
+        probability = short_form_model.predict_proba(features_df)[0]
 
-        risk = "High Risk" if prediction[0] == 1 else "Low Risk"
+        # Map prediction to risk
+        classes = {0: "Non-Diabetes", 1: "Pre-Diabetes", 2: "Diabetes"}
+        risk = classes[prediction[0]]
 
-        return render_template("result.html", risk=risk, probability=probability, form="Short Form")
-    return render_template("short_form.html")
+        return render_template(
+            "result.html", 
+            risk=risk, 
+            probability={
+                "Non-Diabetes": round(probability[0], 4),
+                "Pre-Diabetes": round(probability[1], 4),
+                "Diabetes": round(probability[2], 4),
+            }, 
+            form="Short Form"
+        )
+    return render_template("short_form.html", features=short_form_features)
 
 @app.route("/long_form", methods=["GET", "POST"])
 def long_form():
     if request.method == "POST":
-        # Gather all inputs for long form
-        features = [float(request.form[key]) for key in request.form.keys()]
-        features = np.array(features).reshape(1, -1)
+        # Collect input for long form
+        inputs = {key: float(request.form[key]) for key in request.form.keys()}  # Use all form keys as features
+        features_df = pd.DataFrame([inputs])  # Convert to DataFrame with feature names
 
-        # Predict using long form model
-        prediction = long_form_model.predict(features)
-        probability = long_form_model.predict_proba(features)[0]
+        # Predict using the long form model
+        prediction = long_form_model.predict(features_df)
+        probability = long_form_model.predict_proba(features_df)[0]
 
-        risk = "High Risk" if prediction[0] == 1 else "Low Risk"
+        # Map prediction to risk levels
+        classes = {0: "Non-Diabetes", 1: "Pre-Diabetes", 2: "Diabetes"}
+        risk = classes[prediction[0]]
 
-        return render_template("result.html", risk=risk, probability=probability, form="Long Form")
+        return render_template(
+            "result.html", 
+            risk=risk, 
+            probability={
+                "Non-Diabetes": round(probability[0], 4),
+                "Pre-Diabetes": round(probability[1], 4),
+                "Diabetes": round(probability[2], 4),
+            }, 
+            form="Long Form"
+        )
     return render_template("long_form.html")
 
 if __name__ == "__main__":
     app.run(debug=True)
+
+
 

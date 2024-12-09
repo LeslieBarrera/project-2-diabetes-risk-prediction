@@ -6,36 +6,106 @@
     <title>Short Form - Diabetes Risk Prediction</title>
 </head>
 <body>
-    <h1>Short Form: Diabetes Risk Prediction</h1>
-    <form action="/short_form" method="post">
-        <label for="age">Age:</label>
-        <input type="number" id="age" name="age" required><br><br>
+    <h1>Short Form - Diabetes Risk Prediction</h1>
+    <p>Answer the following questions to assess your diabetes risk. Please provide accurate information for the best results.</p>
+    
+    <form method="POST">
+        <!-- Age -->
+        <label for="Age">Age (in years):</label>
+        <input type="number" id="Age" name="Age" min="1" max="120" placeholder="e.g., 45" required>
+        <br><br>
 
-        <label for="bmi">BMI (Body Mass Index):</label>
-        <input type="number" id="bmi" name="bmi" step="0.1" required><br><br>
+        <!-- BMI -->
+        <label for="BMI">BMI (Body Mass Index):</label>
+        <input type="number" id="BMI" name="BMI" step="0.1" min="10" max="50" placeholder="e.g., 25.4" required>
+        <br><br>
 
-        <label for="physical_activity">Physical Activity Level:</label>
-        <select id="physical_activity" name="physical_activity" required>
-            <option value="Active">Active</option>
-            <option value="Inactive">Inactive</option>
-        </select><br><br>
+        <!-- General Health -->
+        <label for="GenHlth">General Health (1=Excellent, 5=Poor):</label>
+        <select id="GenHlth" name="GenHlth" required>
+            <option value="" disabled selected>Select your general health</option>
+            <option value="1">Excellent</option>
+            <option value="2">Very Good</option>
+            <option value="3">Good</option>
+            <option value="4">Fair</option>
+            <option value="5">Poor</option>
+        </select>
+        <br><br>
 
-        <label for="gender">Gender:</label>
-        <select id="gender" name="gender" required>
-            <option value="Male">Male</option>
-            <option value="Female">Female</option>
-        </select><br><br>
+        <!-- High Blood Pressure -->
+        <label for="HighBP">Do you have high blood pressure?</label>
+        <select id="HighBP" name="HighBP" required>
+            <option value="" disabled selected>Select an option</option>
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+        </select>
+        <br><br>
 
-        <label for="smoking_status">Smoking Status:</label>
-        <select id="smoking_status" name="smoking_status" required>
-            <option value="Smoker">Smoker</option>
-            <option value="Non-smoker">Non-smoker</option>
-        </select><br><br>
+        <!-- High Cholesterol -->
+        <label for="HighChol">Do you have high cholesterol?</label>
+        <select id="HighChol" name="HighChol" required>
+            <option value="" disabled selected>Select an option</option>
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+        </select>
+        <br><br>
 
-        <button type="submit">Submit</button>
+        <!-- Income Level -->
+        <label for="Income">Income Level (1=Lowest, 8=Highest):</label>
+        <select id="Income" name="Income" required>
+            <option value="" disabled selected>Select your income level</option>
+            <option value="1">Lowest</option>
+            <option value="2">Low</option>
+            <option value="3">Lower-Middle</option>
+            <option value="4">Middle</option>
+            <option value="5">Upper-Middle</option>
+            <option value="6">High</option>
+            <option value="7">Higher</option>
+            <option value="8">Highest</option>
+        </select>
+        <br><br>
+
+        <!-- Education Level -->
+        <label for="Education">Education Level (1=No Schooling, 6=College Graduate):</label>
+        <select id="Education" name="Education" required>
+            <option value="" disabled selected>Select your education level</option>
+            <option value="1">No Schooling</option>
+            <option value="2">Elementary School</option>
+            <option value="3">Middle School</option>
+            <option value="4">High School Graduate</option>
+            <option value="5">Some College</option>
+            <option value="6">College Graduate</option>
+        </select>
+        <br><br>
+
+        <!-- Physical Health -->
+        <label for="PhysHlth">Number of days (past month) you felt physically unhealthy:</label>
+        <input type="number" id="PhysHlth" name="PhysHlth" min="0" max="30" placeholder="e.g., 5" required>
+        <br><br>
+
+        <!-- Smoking Status -->
+        <label for="Smoker">Are you a smoker?</label>
+        <select id="Smoker" name="Smoker" required>
+            <option value="" disabled selected>Select an option</option>
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+        </select>
+        <br><br>
+
+        <!-- Sex -->
+        <label for="Sex">Sex:</label>
+        <select id="Sex" name="Sex" required>
+            <option value="" disabled selected>Select your sex</option>
+            <option value="1">Male</option>
+            <option value="0">Female</option>
+        </select>
+        <br><br>
+
+        <button type="submit">Predict</button>
     </form>
 </body>
 </html>
+
 
 
 

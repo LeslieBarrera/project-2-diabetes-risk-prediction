@@ -4,17 +4,53 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Prediction Results</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h1 {
+            color: #2c3e50;
+        }
+        .result-box {
+            border: 1px solid #ccc;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        .probability-list {
+            list-style-type: none;
+            padding: 0;
+        }
+        .probability-list li {
+            margin: 10px 0;
+        }
+        a {
+            text-decoration: none;
+            color: #3498db;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
     <h1>Prediction Results</h1>
-    <p><strong>Form Used:</strong> {{ form }}</p>
-    <p><strong>Risk Level:</strong> {{ risk }}</p>
-    <p><strong>Confidence:</strong> {{ probability }}</p>
-    <a href="/">Return to Home</a>
+    <div class="result-box">
+        <p><strong>Form Type:</strong> {{ form }}</p>
+        <p><strong>Predicted Risk Level:</strong> {{ risk }}</p>
+        <h2>Class Probabilities</h2>
+        <ul class="probability-list">
+            <li><strong>Non-Diabetes:</strong> {{ probability['Non-Diabetes'] }}</li>
+            <li><strong>Pre-Diabetes:</strong> {{ probability['Pre-Diabetes'] }}</li>
+            <li><strong>Diabetes:</strong> {{ probability['Diabetes'] }}</li>
+        </ul>
+        <a href="/">Go Back to Home</a>
+    </div>
 </body>
 </html>
-
-
 
 
 
