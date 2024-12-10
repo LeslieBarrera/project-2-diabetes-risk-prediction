@@ -158,11 +158,11 @@ Follow the steps below to set up and replicate this project on your local machin
     cd project-2-diabetes-risk-prediction
     ```
 
-### **3. Install Dependencies
+### **3. Install Dependencies**
 
     pip install -r requirements.txt
 
-### **4. Run the Flask Application 
+### **4. Run the Flask Application**
 
     ```bash
     python app.py
@@ -170,22 +170,22 @@ Follow the steps below to set up and replicate this project on your local machin
 
 - The app will start running on http://127.0.0.1:5000. Open this URL in your browser to access the interface.
 
-### **5. Explore the Jupyter Notebook 
+### **5. Explore the Jupyter Notebook** 
 - The project includes a Jupyter Notebook (notebook.ipynb) detailing data preprocessing, feature selection, and model training:
 
     ```bash
     jupyter lab
     ```
 
-### **6. Dataset
+### **6. Dataset**
 - The dataset (diabetes_012_health_indicators_BRFSS2015.csv) is included in the repository under the data folder.
 - Preprocessing steps are applied directly in the notebook.
 
-### **7. Test the Application 
+### **7. Test the Application** 
 - Use the Short Form to test predictions with 10 key features.
 - Use the Long Form for more comprehensive predictions using all 21 features.
 
-### **8. Deployment (Optional)
+### **8. Deployment (Optional)**
 - To deploy the application to a cloud platform like Render:
     1. Follow the Render deployment steps in the Deployment section of this README.
     2. Ensure your models (diabetes_short_form_model.pkl and long_form_model.pkl) are included in the repository.
