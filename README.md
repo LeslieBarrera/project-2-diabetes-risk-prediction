@@ -12,14 +12,10 @@
 9. [Screenshots](#screenshots)
 10. [Future Improvements](#future-improvements)
 11. [Acknowledgments](#acknowledgments)
-
--- 
-
+ 
 ## Overview
 
 This project explores the use of machine learning to predict diabetes risk levels using survey data from the Behavioral Risk Factor Surveillance System (BRFSS). The primary objectives were to identify key risk factors, develop a short-form survey for prediction, and evaluate the performance of various machine learning models.
-
---
 
 ## Key Questions
 
@@ -37,16 +33,12 @@ What risk factors are most predictive of diabetes risk?
 4. Can we create a short form of questions from the BRFSS using feature selection to accurately predict if someone might have diabetes or is at high risk of diabetes?
 - A short form with 10 key features was created. It simplifies user input while maintaining strong prediction accuracy.
 
---
-
 ## Dataset
 
 - Source: Behavioral Risk Factor Surveillance System (BRFSS) 2015
 - Size: 253,680 entries and 22 columns.
 - Target Variable: Diabetes_012 (three classes: Non-Diabetes,Pre-Diabetes, Diabetes).
 - Features: Survey questions and health indicators, such as BMI, General Health, and Smoker status.
-
---
 
 ## Steps to Create the Model
 
@@ -78,7 +70,6 @@ What risk factors are most predictive of diabetes risk?
 6. Model Evaluation
 - Evaluated using metrics such as accuracy, precision, recall, F1-score, and ROC-AUC.
 
--- 
 
 ## Results 
 
@@ -135,8 +126,6 @@ This grouped bar chart compares the accuracy, recall, and ROC-AUC across the thr
 - The long form achieves slightly better overall accuracy and recall at the expense of requiring more user input.
 - Logistic Regression was chosen as the final model for deployment due to its interpretability, ease of deployment, and consistent performance on key metrics.
 
---
-
 ## Why Logistic Regression?
 
 Logistic Regression was chosen as the final model because:
@@ -148,8 +137,6 @@ Logistic Regression was chosen as the final model because:
     - The project emphasized simplicity and usability, which aligns well with Logistic Regression.
 - Ease of Deployment:
     - Computationally efficient and well-suited for deployment in lightweight applications.
-
---
 
 ## How to Replicate This Project 
 
@@ -212,8 +199,6 @@ Follow the steps below to set up and replicate this project on your local machin
 
 - For deployment, additional configurations (e.g., requirements.txt, Procfile) may be required.
 
---
-
 ## Deployment
 
 ### Flask Application
@@ -227,8 +212,6 @@ Follow the steps below to set up and replicate this project on your local machin
 ### Live Demo
 - Hosted on Render, with a user-friendly interface for both short and long forms.
     https://project-2-diabetes-risk-prediction.onrender.com
-
---
 
 ## Testing
 
@@ -262,8 +245,6 @@ To ensure the reliability and functionality of the project, follow the steps bel
      - Extreme values (e.g., BMI > 50 or < 10).
      - Invalid inputs (e.g., text in numeric fields).
 
---
-
 ## Screenshots 
 Below are screenshots showcasing the application’s interface and functionality:
 
@@ -286,8 +267,6 @@ Below are screenshots showcasing the application’s interface and functionality
 - Displays the predicted risk level and confidence percentages for each class (Non-Diabetes, Pre-Diabetes, Diabetes).
 
 ![Results Page](./images/resultspage.jpg)
-
--- 
 
 ## Future Improvements
 
@@ -317,8 +296,6 @@ While this project demonstrates significant progress in predicting diabetes risk
 ### **6. Deployment and Scalability**
 - Expand the app’s deployment to ensure scalability and robustness under higher user loads.
 - Implement a feedback mechanism for users to share their results or experiences to refine the models and interface over time.
-
---
 
 ## Acknowledgments 
 
