@@ -110,7 +110,7 @@ The long form includes all 21 features from the BRFSS dataset, providing a more 
 #### Class Distribution
 The distribution of target classes highlights the significant class imbalance, with **Non-Diabetes (0)** making up 84% of the dataset, while **Pre-Diabetes (1)** and **Diabetes (2)** account for much smaller proportions.
 
-![Class Distribution](./images/distribution.png)
+![Class Distribution](./images/distrubution.png)
 
 #### Feature Importance
 The plot below shows the top 10 features identified during feature selection, ranked by their importance scores from the Random Forest model.
