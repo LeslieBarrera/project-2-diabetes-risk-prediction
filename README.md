@@ -1,5 +1,7 @@
 # Diabetes Risk Prediction Project
 
+![Diabetes](./images/diabetes.jpg)
+
 ## Table of Contents
 1. [Overview](#overview)
 2. [Key Questions](#key-questions)
@@ -108,17 +110,17 @@ The long form includes all 21 features from the BRFSS dataset, providing a more 
 #### Class Distribution
 The distribution of target classes highlights the significant class imbalance, with **Non-Diabetes (0)** making up 84% of the dataset, while **Pre-Diabetes (1)** and **Diabetes (2)** account for much smaller proportions.
 
-![Class Distribution](distribution.png)
+![Class Distribution](./images/distribution.png)
 
 #### Feature Importance
 The plot below shows the top 10 features identified during feature selection, ranked by their importance scores from the Random Forest model.
 
-![Feature Importance](features.png)
+![Feature Importance](./images/features.png)
 
 #### Model Comparison
 This grouped bar chart compares the accuracy, recall, and ROC-AUC across the three models (Logistic Regression, Random Forest, and XGBoost) for both the short and long forms.
 
-![Model Comparison](modelcomparison.png)
+![Model Comparison](./images/modelcomparison.png)
 
 ### 4. Model Conclusions
 
