@@ -25,3 +25,6 @@ In the process of developing our model, we aimed to answer 4 research questions 
 ### Step Three - Clearly Defining Risk Categories 
 ### Step Four - Developing the Model 
 ### Step Five - Model Evaluation 
+
+## Ackowledgments 
+This project was made possible by the works of David Melara, Leslie Barrera Dorantes, Ray George, and Steven Sarvas. 
